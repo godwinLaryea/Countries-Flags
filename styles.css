@@ -1,0 +1,55 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --primary-bg-color: #E2E8F0;
+  --secondary-bg-color: #F1F5F9;
+  --primary-font-color: #D5A85C;
+  font-size: 16px;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+}
+
+.grid-country-container{
+  background-color: var(--primary-bg-color);
+  width: min(85%, 80rem);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 0.5rem 3rem;
+
+  .country{
+    background-color: var(--secondary-bg-color);
+    /* min-height: 200px; */
+    /* min-width: 135px; */
+    padding-bottom: 5.32rem;
+  }
+
+  .flag{
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+  }
+
+  img{
+    width: 85px;
+    height: 70px;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .country-name{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--primary-font-color);
+  }
+}
