@@ -3,9 +3,17 @@ import {countries} from "./country.js";
 const gridContainer = document.getElementById("grid-country-container");
 gridContainer.className = "grid-country-container";
 
-function getCountryData(){
+const searchInput = document.getElementById("search")
 
-for(let i = 0; i < countries.length; i++){
+let displayedCountries = countries;
+
+
+function getCountryData(countryList){
+
+  gridContainer.innerHTML = "";
+  
+  for(let i = 0; i < countryList.length; i++){
+
     let countryContainer = document.createElement("div");
     countryContainer.className = "country";
     gridContainer.appendChild(countryContainer);
@@ -16,16 +24,16 @@ for(let i = 0; i < countries.length; i++){
     countryContainer.appendChild(flagImage);
     
     let image = document.createElement("img");
-    image.src = countries[i].flag;
+    image.src = countryList[i].flag;
     flagImage.appendChild(image);
     
     let countryName = document.createElement("p");
     countryName.className = "country-name";
-    countryName.textContent = countries[i].name;
+    countryName.textContent = countryList[i].name;
     countryContainer.appendChild(countryName);
 };
 }
-getCountryData();
+
 
     const searchCountry = (country) => {
 
@@ -33,41 +41,18 @@ getCountryData();
     
         for(let i = 0; i < countries.length; i++){
 
-            if(countries[i].name.includes(country)){
-                countryList.push(countries[i].name);
-                
-            }else{
-                `Country not found`
-            }
-        }
-        return countryList;
-    };
-    
-    console.log((searchCountry('gent')));
-// });
-
-
-
-
-
-
-
-
-
-// let countryContainer = document.createElement("div");
-// countryContainer.className = "country";
-// gridContainer.appendChild(countryContainer);
-
-// let flagImage = document.createElement("div");
-// flagImage.className = "flag";
-// countryContainer.appendChild(flagImage);
-
-// let image = document.createElement("img");
-// image.src = countries[0].flag;
-// flagImage.appendChild(image);
-
-// let countryName = document.createElement("p");
-// countryName.className = "country-name";
-
-// countryName.textContent = countries[0].name;
-// countryContainer.appendChild(countryName);
+            if(countries[i].name.toLowerCase().includes(country.toLowerCase())){
+                countryList.push(countries[i]);   
+            };
+      };
+      getCountryData(countryList);
+      return countryList;
+  };
+  
+  searchInput.addEventListener("input", () => {
+    searchCountry(searchInput.value)
+  });
+  
+  window.addEventListener("load", () => {
+  getCountryData(displayedCountries);
+});
