@@ -10,19 +10,41 @@
 }
 
 body{
+  background-color: var(--primary-bg-color);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
   min-height: 100dvh;
 }
 
+.heading{
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--secondary-bg-color);
+  position: fixed;
+  top: 0;
+}
+
+#search{
+  padding: 0.8rem 1rem;
+  width: min(100%, 300px);
+  border-radius: 1rem;
+  border: 1px solid var(--primary-bg-color);
+}
+
 .grid-country-container{
-  background-color: var(--primary-bg-color);
   width: min(85%, 80rem);
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
   gap: 0.5rem 3rem;
+  margin-top: 11rem;
 
   .country{
     background-color: var(--secondary-bg-color);
